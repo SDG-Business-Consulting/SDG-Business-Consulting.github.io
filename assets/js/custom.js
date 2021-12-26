@@ -1,8 +1,8 @@
 (function($) {
-  'use strict';  
+  'use strict';
     /*---------------------------------
         Preloader JS
-    -----------------------------------*/ 
+    -----------------------------------*/
     var prealoaderOption = $(window);
     prealoaderOption.on("load", function () {
         var preloader = jQuery('.lds-ripple');
@@ -14,21 +14,21 @@
         Preloader JS
     -----------------------------------*/
 
-    /*---------------------------------  
+    /*---------------------------------
         sticky header JS
     -----------------------------------*/
-    $(window).on('scroll',function() {    
+    $(window).on('scroll',function() {
         var scroll = $(window).scrollTop();
          if (scroll < 100) {
           $(".header_area").removeClass("sticky");
          }else{
           $(".header_area").addClass("sticky");
          }
-    }); 
-    /*---------------------------------  
+    });
+    /*---------------------------------
         sticky header JS
     -----------------------------------*/
-    /*---------------------- 
+    /*----------------------
         Slick slider js
     ------------------------*/
     $('.hero_slider').slick({
@@ -86,10 +86,10 @@
         fade: true,
         slidesToScroll: 1
     });
-    /*---------------------- 
+    /*----------------------
         Slick slider js
     ------------------------*/
-    /*---------------------- 
+    /*----------------------
         mobile menu js
     ------------------------*/
     $(".menu_icon,.close_btn").on('click', function (e) {
@@ -100,10 +100,10 @@
       e.preventDefault();
       $(".sidenav_menu").toggleClass("active");
     });
-    $.sidebarMenu($('.sidebar-menu')) 
-    /*---------------------- 
+    $.sidebarMenu($('.sidebar-menu'))
+    /*----------------------
         Isotope js
-    ------------------------*/ 
+    ------------------------*/
     $('#project').imagesLoaded( function() {
         var $grid = $('.grid_wrapper').isotope({
             itemSelector: '.single_project',
@@ -121,10 +121,10 @@
             });
         });
     });
-    /*---------------------- 
+    /*----------------------
         Isotope js
     ------------------------*/
-    /*---------------------- 
+    /*----------------------
         Isotope js
     ------------------------*/
     // wow js
@@ -132,12 +132,34 @@
 
 
 if($("#search-input").length >0){
-    
+
     var sjs = SimpleJekyllSearch({
       searchInput: document.getElementById('search-input'),
       resultsContainer: document.getElementById('results-container'),
       json: '/search.json'
     });
   }
-    
-})(window.jQuery);   
+
+  /*----------------------------------------------*/
+  /*---------- SDG Business Consulting -----------*/
+  /*----------------------------------------------*/
+
+  if (window.location.pathname.includes('services')) {
+    var urlParams = new URLSearchParams(window.location.search);
+    var sections = [
+      'impact',
+      'reporting',
+      'communication',
+      'strategy',
+      'greendeal',
+      'lean'
+    ];
+
+    if (urlParams.has('show') && sections.includes(urlParams.get('show'))) {
+      $('a[href="#' + urlParams.get('show') + '"]').tab('show');
+    } else {
+      $('a[href="#impact"]').tab('show');
+    }
+  }
+
+})(window.jQuery);
