@@ -28,6 +28,7 @@
     /*---------------------------------
         sticky header JS
     -----------------------------------*/
+
     /*----------------------
         Slick slider js
     ------------------------*/
@@ -89,6 +90,7 @@
     /*----------------------
         Slick slider js
     ------------------------*/
+
     /*----------------------
         mobile menu js
     ------------------------*/
@@ -101,6 +103,10 @@
       $(".sidenav_menu").toggleClass("active");
     });
     $.sidebarMenu($('.sidebar-menu'))
+    /*----------------------
+        mobile menu js
+    ------------------------*/
+
     /*----------------------
         Isotope js
     ------------------------*/
@@ -124,19 +130,29 @@
     /*----------------------
         Isotope js
     ------------------------*/
+
     /*----------------------
-        Isotope js
+        wow js
     ------------------------*/
-    // wow js
     new WOW().init();
+    /*----------------------
+        wow js
+    ------------------------*/
 
+  /*----------------------
+      Search
+  ------------------------*/
+  $("#news-search").submit(function(event) {
+    event.preventDefault();
+  });
 
-if($("#search-input").length >0){
-
+  if($("#search-input").length >0) {
     var sjs = SimpleJekyllSearch({
-      searchInput: document.getElementById('search-input'),
+      json: '/search.json',
+      noResultsText: '<li>На жаль, за Вашим запитом нічого не знайдено...</li>',
       resultsContainer: document.getElementById('results-container'),
-      json: '/search.json'
+      searchInput: document.getElementById('search-input'),
+      searchResultTemplate: '<li><a href="{url}">{title}</a></li>'
     });
   }
 
@@ -161,5 +177,4 @@ if($("#search-input").length >0){
       $('a[href="#impact"]').tab('show');
     }
   }
-
 })(window.jQuery);
